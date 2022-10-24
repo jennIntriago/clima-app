@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Busquedas {
   //propiedades
-  historial = ["Tegucigalpa", "Madrid", "San Jose"];
+  historial = [];
 
   constructor() {
     //TODO: leer BD si existe
@@ -65,6 +65,17 @@ class Busquedas {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  agregarHistorial(lugar = "") {
+    // prevenir duplicados
+    if (this.historial.includes(lugar.toLowerCase())) {
+      return;
+    }
+
+    this.historial.unshift(lugar.toLowerCase());
+
+    // Grabar en DB
   }
 }
 
