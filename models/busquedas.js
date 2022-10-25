@@ -14,7 +14,9 @@ class Busquedas {
   get historialCapitalizado() {
     return this.historial.map((lugar) => {
       let palabras = lugar.split(" ");
+
       palabras = palabras.map((p) => p[0].toUpperCase() + p.substring(1));
+
       return palabras.join(" ");
     });
   }
@@ -83,6 +85,8 @@ class Busquedas {
     if (this.historial.includes(lugar.toLowerCase())) {
       return;
     }
+    // Muestra solo 6 registros de forma descendente
+    this.historial = this.historial.splice(0, 5);
 
     this.historial.unshift(lugar.toLowerCase());
 
